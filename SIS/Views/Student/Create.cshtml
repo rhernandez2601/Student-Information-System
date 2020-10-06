@@ -1,0 +1,78 @@
+﻿@model SIS.Models.View_Models.StudentVM
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Student</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Student.FirstName" class="control-label"></label>
+                <input asp-for="Student.FirstName" class="form-control" />
+                <span asp-validation-for="Student.FirstName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Student.LastName" class="control-label"></label>
+                <input asp-for="Student.LastName" class="form-control" />
+                <span asp-validation-for="Student.LastName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Student.GPA" class="control-label"></label>
+                <input asp-for="Student.GPA" class="form-control" />
+                <span asp-validation-for="Student.GPA" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Student.Address.Street1" class="control-label"></label>
+                <input asp-for="Student.Address.Street1" class="form-control" />
+                <span asp-validation-for="Student.Address.Street1" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Student.Address.Street2" class="control-label"></label>
+                <input asp-for="Student.Address.Street2" class="form-control" />
+                <span asp-validation-for="Student.Address.Street2" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Student.Address.City" class="control-label"></label>
+                <input asp-for="Student.Address.City" class="form-control" />
+                <span asp-validation-for="Student.Address.City" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Student.Address.State" class="control-label"></label>
+                <select asp-for="Student.Address.State.StateAbbreviation" asp-items="Model.StateItems" class="form-control"></select>
+                <span asp-validation-for="Student.Address.State.StateAbbreviation" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Student.Address.PostalCode" class="control-label"></label>
+                <input asp-for="Student.Address.PostalCode" class="form-control" />
+                <span asp-validation-for="Student.Address.PostalCode" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Student.Major" class="control-label"></label>
+                <select asp-for="Student.Major.MajorId" asp-items="Model.MajorItems" class="form-control"></select>
+                <span asp-validation-for="Student.Major.MajorId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Student.Courses" class="control-label"></label>
+                <select asp-for="SelectedCourseIds" asp-items="Model.CourseItems" class="form-control" multiple size="5"></select>
+                <span asp-validation-for="Student.Courses" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

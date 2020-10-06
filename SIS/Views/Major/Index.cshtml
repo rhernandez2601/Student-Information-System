@@ -1,0 +1,41 @@
+﻿@model IEnumerable<SIS.Models.Data.Major>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.MajorId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MajorName)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MajorId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MajorName)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.MajorId }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.MajorId }, new { onclick = "return confirm('Are you sure you want to delete this major?');" })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
